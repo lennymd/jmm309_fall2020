@@ -1,6 +1,8 @@
 ---
 title: "F1 analysis"
-output: html_notebook
+output:
+  html_document:
+    df_print: paged
 ---
 
 This is a test example of the analysis of F1 data. This originally was a [google doc](https://docs.google.com/document/d/1JSkfk5yLYUXPndDoFL5zjHnUzOAHhZoX4_DQcdYfyf4/edit?usp=sharing).
