@@ -1,0 +1,118 @@
+---
+title: "F1 analysis"
+output: html_notebook
+---
+
+This is a test example of the analysis of F1 data. This originally was a [google doc](https://docs.google.com/document/d/1JSkfk5yLYUXPndDoFL5zjHnUzOAHhZoX4_DQcdYfyf4/edit?usp=sharing).
+
+I like this format the best because I can put text and code in one presentation and be sure it goes together.
+
+## Setup
+```{r}
+library(tidyverse)
+```
+
+
+## Pre-Analysis
+### Getting the data
+
+Lenny scraped race results from [StatsF1](https://www.statsf1.com/en/default.aspx). He used the [following scripts](https://github.com/lennymd/formulaOneAnalysis/tree/main/scripts) to first scrape all the races, and then the screen results from each race.
+
+On 2020-09-28 I downloaded the CSV [from this url](https://github.com/lennymd/formulaOneAnalysis/blob/main/data/race_results_statsf1.csv) and saved it to my folder as `race_results_statsf1.csv`
+
+### Inspecting the data
+
+We have 10 columns. Based on my previous work with the data, each column means: 
+
+1. `race_id`: the number of the race from the first race in 1950 to now.
+1. `year`: the year when the race happened; the year of the season
+1. `round`: the position of the race in the season. A value of 1 would be the first race of that year.
+1. `race_name`: the country or place where the race happened
+1. `position`: finishing position of the driver based on Statsf1. StatsF1 has a [list of abbreviations](https://www.statsf1.com/en/saisons.aspx) to understand the non-numerical code.
+1. `p_prelim`: **This column I created while scraping**. I tried to interpret the `position` variable to that it would be numerical. Might be a good idea to rename this. 
+1. `driver`: name of driver. Right now it's first name in regular case, and last name in all-caps.
+1. `team`: Name of the team or constructor the driver was driving for.
+1. `constructor_long`: Combination of team and engine. 
+1. `extra`: extra details like finishing time and reasons for not finishing a race.
+
+Looking at the CSV using Excel we have 25631 rows. Taking out the header row, we have 25630 observations. In this case an observation is a race result for a driver during a particular race.
+
+### Checking Variables
+
+It's good to check all the variables before analysis to get a good idea of what we're working with. As an example let's look at `race_id`.
+
+We have 205630 observations that cover all the races from, the start in 1950 to the end of the 2019 season. *How many races have there been? *
+
+We could open our CSV in Excel and in a cell find the max of the `race_id` column. It'd look something like: `=MAX(A:A)`
+Doing it in R we can do this: 
+
+```{r}
+df <- read_csv("race_results_statsf1.csv")
+max(df['race_id'])
+```
+
+We first load the data and then find the max of the `race_id` column. That would be: `r max(df['race_id'])`. How can we check that this number is good? I distinctly remember that the 1000th race was the China GP in 2019. If we look at the [2019 F1 season page on Wikipedia](https://en.wikipedia.org/wiki/2019_Formula_One_World_Championship#Calendar) we can count the races after the 2019 China GP. And indeed there are 1018 races. 
+
+I would recommend doing this for the other columns when you work with a new dataset.
+
+### Cleaning data
+
+Before we start analysis we may want to clean the data to make our column headers make more sense. 
+
+**Do in class@@**
+
+## Analysis
+
+A good analysis is based on having questions and then using the data to answer them. We won't be able to answer all our questions with just the data, so that's something to keep in mind. 
+
+### Who's the best F1 driver?
+
+Since we have race data, this might be a good question to start with. Before we can answer it though, we have to pick a definition for `best`. Do we mean: 
+
+1. most wins?
+1. highest percentage of races won?
+1. most first + second place finishes?
+1. most podium finishes?
+1. highest percentage of podium finishes?
+1. Lowest average finishing position? (* we can talk about this later.)
+
+In addition to best, we could also try to define the type of F1 driver we're looking at. Do we:
+1. look at the entire history of the sport? 
+1. look only at the last 10 or 20 years?
+1. look at the best driver each decade?
+
+For now we'll look at the entire history of F1 and we'll focus on best being the most wins.
+
+
+#### Which F1 driver has the most races won?
+
+To answer this column, we need to focus on two things:
+
+* the name of the driver which is in the `driver` column.
+* the finishing position of the driver. We could use either the `p_prelim` or the `position` columns. For now, let's use `p_prelim` since it's a column of just numbers.
+
+To answer this question I might first filter the race_results to only look at the wins for each race -- the places where `p_prelim` is `1`. Then I would group the remaining rows by driver name. Once I have that I would then count how many times each driver's name appears and that would be how many times they won. In code that would be: 
+
+1. Filter data to just have winners (p_prelim == 1)
+```{r}
+winners <- filter(df, p_prelim == 1)
+```
+
+2. Group winners by driver name 
+```{r}
+winning_drivers <- group_by(winners, driver)
+```
+
+3. Summarize winning_drivers by counting how many times they were in the dataset. Each time means a race win for them. We can use `summarise()` or `summarize()`
+
+```{r}
+wins <- summarise(winning_drivers, count=n())
+
+```
+To find the most wins, we could open the `wins` object and sort by descending order using the little tabs and such. We could also use the `arrange()` function and let that do the work:
+
+```{r}
+arrange(wins, desc(count))
+```
+
+Michael Schumacher is indeed the driver with the most wins. 
