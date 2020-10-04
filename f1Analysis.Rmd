@@ -1,8 +1,6 @@
 ---
 title: "F1 analysis"
-output:
-  html_document:
-    df_print: paged
+output: html_notebook
 ---
 
 This is a test example of the analysis of F1 data. This originally was a [google doc](https://docs.google.com/document/d/1JSkfk5yLYUXPndDoFL5zjHnUzOAHhZoX4_DQcdYfyf4/edit?usp=sharing).
@@ -117,4 +115,4 @@ To find the most wins, we could open the `wins` object and sort by descending or
 arrange(wins, desc(count))
 ```
 
-Michael Schumacher is indeed the driver with the most wins. 
+Michael Schumacher is indeed the driver with the most wins. What could be some follow up questions to this? Should we look at other ways of defining best? Maybe see who has the least amount of wins but still won a championship?
