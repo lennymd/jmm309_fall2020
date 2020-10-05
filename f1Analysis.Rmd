@@ -1,6 +1,8 @@
 ---
 title: "F1 analysis"
-output: html_notebook
+output: 
+  html_notebook: default
+  github_document: default
 ---
 
 This is a test example of the analysis of F1 data. This originally was a [google doc](https://docs.google.com/document/d/1JSkfk5yLYUXPndDoFL5zjHnUzOAHhZoX4_DQcdYfyf4/edit?usp=sharing).
@@ -50,7 +52,6 @@ Doing it in R we can do this:
 df <- read_csv("race_results_statsf1.csv")
 max(df['race_id'])
 ```
-
 We first load the data and then find the max of the `race_id` column. That would be: `r max(df['race_id'])`. How can we check that this number is good? I distinctly remember that the 1000th race was the China GP in 2019. If we look at the [2019 F1 season page on Wikipedia](https://en.wikipedia.org/wiki/2019_Formula_One_World_Championship#Calendar) we can count the races after the 2019 China GP. And indeed there are 1018 races. 
 
 I would recommend doing this for the other columns when you work with a new dataset.
