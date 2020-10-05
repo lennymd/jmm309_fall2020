@@ -1810,15 +1810,19 @@ cols(
 <p>Let’s group by team:</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubW9uYWNvX3dpbm5lcnMgJT4lIGdyb3VwX2J5KHRlYW0pXG5gYGAifQ== -->
-<pre class="r"><code>monaco_winners %&gt;% group_by(team)</code></pre>
-<!-- rnb-source-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6MTcsIm5jb2wiOjJ9LCJyZGYiOiJINHNJQUFBQUFBQUFBMTFTd1c3Q01BeE5RenVnMHNZbWZvQWZvSmZ0c091NmlWMUFtaW9tdUpyV1FMVTBRV2txdHR2K2VIOUFsNVlrR3oyNDhiTmorejAzeWN2NlBseUhoSkFlOFFrbHZVQzdKSGhmenFhUGhQaFVBMDhuaHMzNXFTK050ZE1FYjdYZG1VUi9rYzVCSXJkd2hsS0N6QTBNNWtKVnBRRzlPRmtZZDdCQW1XS0dOalZJTUp2RUZXTUdYejBMY1VCcG15Ni9wRVNYSEt4eXhuSW9YSEdNSEpVU2prTXNZYk9Id3MyQ0VpVW95Nm1mSUllS0tRUERKN2FGU1NJS0ZLNmZoQ09mdkw1Wk12TjhsenN5L2txd3JUNnYyeVVRTXRMV3RtM2tHdlBibGY0WjdaaDNhUmViRGpnVWVpL25MVk03VktIVEU2U2k0cXBUTlpUaUdObktoaHI5MXArNnJuKzY3Vk1HcFcxdmcyRUdDcUt0MVBVYW5Ub2xmWEZRdWVDNmlJNk53UC9GbnV3RVJoVnZtR1RUZEYveGorbERNOENJSllhZFo1Wm5mWG9lU1d2VEtyQ3JSNzdMT1ZydUREWm9YOEdOVnR3S2pnNHk1KzV2Nm1nWkthSEEzZ3RUd1d5azFVWk92MFEyeWFmNEFnQUEifQ== -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["team"],"name":[1],"type":["chr"],"align":["left"]},{"label":["count"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"McLaren","2":"15"},{"1":"Ferrari","2":"9"},{"1":"Lotus","2":"7"},{"1":"BRM","2":"5"},{"1":"Mercedes","2":"5"},{"1":"Red Bull","2":"4"},{"1":"Cooper","2":"3"},{"1":"Tyrrell","2":"3"},{"1":"Williams","2":"3"},{"1":"Benetton","2":"2"},{"1":"Brabham","2":"2"},{"1":"Maserati","2":"2"},{"1":"Renault","2":"2"},{"1":"Alfa Romeo","2":"1"},{"1":"Brawn GP","2":"1"},{"1":"Ligier","2":"1"},{"1":"Wolf","2":"1"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[17]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiTGVubnkncyBGMSBhbmFseXNpcyBhYm91dCBhYmFuZG9uaW5nIHJhY2VzIgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tCgpIZXkgSSB3YW50IHRvIGFuc3dlciB0aGlzIHF1ZXN0aW9uOiAqKldoYXQgdGVhbSB3b24gdGhlIG1vc3QgYXQgTW9uYWNvPyoqCgpJJ20gdGhpbmtpbmcgb2YgYSBzdG9yeSB0aGF0IGdvZXM6CgoxLiBUZWFtIEEgd29uIHRoZSBtb3N0IGF0IG1vbmFjbwoxLiBUZWFtIEEncyBiZWVuIGluIEYxIHNpbmNlIGJsYWgKMS4gV2hhdCBkcml2ZXIgaGFzIHRoZSBiZXN0IG1vbmFjbyByZWNvcmQuIFdoYXQgYWJvdXQgdGhlIGJlc3QgbGFwPwoxLiBIaXN0b3J5IG9mIE1vbmFjbyBpbiBGMS4gV2hhdCBraW5kIG9mIGEgY2lyY3VpdCBpcyBpdC4KCiMjIExvYWRpbmcgU3R1ZmYKCmBgYHtyfQpsaWJyYXJ5KHRpZHl2ZXJzZSkKYGBgCgpMZXQncyBsb2FkIHRoZSBkYXRhIHRvbzoKCmBgYHtyfQpyYWNlX3Jlc3VsdHMgPC0gcmVhZF9jc3YoIi4uLy4uL2RhdGEvcmFjZV9yZXN1bHRzX3N0YXRzZjEuY3N2IikKYGBgCkBAIEdvIGJhY2sgYW5kIGNsZWFuIHRoaXMgZGF0YSBpZiB5b3Ugd2FudEBACgpgYGB7cn0KbW9uYWNvIDwtIGZpbHRlcihyYWNlX3Jlc3VsdHMsIHJhY2VfbmFtZSA9PSAiTW9uYWNvIikKbW9uYWNvCmBgYAoKTm93IGxldCdzIGZpbmQgdGhlIHdpbm5lcnM6CgpgYGB7cn0KbW9uYWNvX3dpbm5lcnMgPC0gZmlsdGVyKG1vbmFjbywgcG9zaXRpb24gPT0gJzEnKQpgYGAKCkxldCdzIGdyb3VwIGJ5IHRlYW06CgpgYGB7cn0KbW9uYWNvX3dpbm5lcnMgJT4lIGdyb3VwX2J5KHRlYW0pCmBgYAoK</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiTGVubnkncyBGMSBhbmFseXNpcyBhYm91dCBhYmFuZG9uaW5nIHJhY2VzIgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tCgpIZXkgSSB3YW50IHRvIGFuc3dlciB0aGlzIHF1ZXN0aW9uOiAqKldoYXQgdGVhbSB3b24gdGhlIG1vc3QgYXQgTW9uYWNvPyoqCgpJJ20gdGhpbmtpbmcgb2YgYSBzdG9yeSB0aGF0IGdvZXM6CgoxLiBUZWFtIEEgd29uIHRoZSBtb3N0IGF0IG1vbmFjbwoxLiBUZWFtIEEncyBiZWVuIGluIEYxIHNpbmNlIGJsYWgKMS4gV2hhdCBkcml2ZXIgaGFzIHRoZSBiZXN0IG1vbmFjbyByZWNvcmQuIFdoYXQgYWJvdXQgdGhlIGJlc3QgbGFwPwoxLiBIaXN0b3J5IG9mIE1vbmFjbyBpbiBGMS4gV2hhdCBraW5kIG9mIGEgY2lyY3VpdCBpcyBpdC4KCiMjIExvYWRpbmcgU3R1ZmYKCmBgYHtyfQpsaWJyYXJ5KHRpZHl2ZXJzZSkKYGBgCgpMZXQncyBsb2FkIHRoZSBkYXRhIHRvbzoKCmBgYHtyfQpyYWNlX3Jlc3VsdHMgPC0gcmVhZF9jc3YoIi4uLy4uL2RhdGEvcmFjZV9yZXN1bHRzX3N0YXRzZjEuY3N2IikKYGBgCkBAIEdvIGJhY2sgYW5kIGNsZWFuIHRoaXMgZGF0YSBpZiB5b3Ugd2FudEBACgpgYGB7cn0KbW9uYWNvIDwtIGZpbHRlcihyYWNlX3Jlc3VsdHMsIHJhY2VfbmFtZSA9PSAiTW9uYWNvIikKbW9uYWNvCmBgYAoKTm93IGxldCdzIGZpbmQgdGhlIHdpbm5lcnM6CgpgYGB7cn0KbW9uYWNvX3dpbm5lcnMgPC0gZmlsdGVyKG1vbmFjbywgcG9zaXRpb24gPT0gJzEnKQpgYGAKCkxldCdzIGdyb3VwIGJ5IHRlYW06CgpgYGB7cn0KbW9uYWNvX3dpbm5pbmdfdGVhbXMgPC0gZ3JvdXBfYnkobW9uYWNvX3dpbm5lcnMsIHRlYW0pIAptb25hY29fd2lubmluZ190ZWFtc19jb3VudCA8LSBzdW1tYXJpemUobW9uYWNvX3dpbm5pbmdfdGVhbXMsIGNvdW50PW4oKSkKYXJyYW5nZShtb25hY29fd2lubmluZ190ZWFtc19jb3VudCwgZGVzYyhjb3VudCkpCmBgYAoKCg==</div>
 
 
 

@@ -39,6 +39,9 @@ monaco_winners <- filter(monaco, position == '1')
 Let's group by team:
 
 ```{r}
-monaco_winners %>% group_by(team)
+monaco_winning_teams <- group_by(monaco_winners, team) 
+monaco_winning_teams_count <- summarize(monaco_winning_teams, count=n())
+arrange(monaco_winning_teams_count, desc(count))
 ```
+
 
