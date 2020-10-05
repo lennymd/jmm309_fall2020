@@ -1,0 +1,44 @@
+---
+title: "Lenny's F1 analysis about abandoning races"
+output: html_notebook
+---
+
+Hey I want to answer this question: **What team won the most at Monaco?**
+
+I'm thinking of a story that goes:
+
+1. Team A won the most at monaco
+1. Team A's been in F1 since blah
+1. What driver has the best monaco record. What about the best lap?
+1. History of Monaco in F1. What kind of a circuit is it.
+
+## Loading Stuff
+
+```{r}
+library(tidyverse)
+```
+
+Let's load the data too:
+
+```{r}
+race_results <- read_csv("../../data/race_results_statsf1.csv")
+```
+@@ Go back and clean this data if you want@@
+
+```{r}
+monaco <- filter(race_results, race_name == "Monaco")
+monaco
+```
+
+Now let's find the winners:
+
+```{r}
+monaco_winners <- filter(monaco, position == '1')
+```
+
+Let's group by team:
+
+```{r}
+monaco_winners %>% group_by(team)
+```
+

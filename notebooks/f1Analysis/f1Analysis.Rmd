@@ -1,8 +1,10 @@
 ---
 title: "F1 analysis"
-output: 
-  html_notebook: default
+output:
+  html_document:
+    df_print: paged
   github_document: default
+  html_notebook: default
 ---
 
 This is a test example of the analysis of F1 data. This originally was a [google doc](https://docs.google.com/document/d/1JSkfk5yLYUXPndDoFL5zjHnUzOAHhZoX4_DQcdYfyf4/edit?usp=sharing).
@@ -60,7 +62,14 @@ I would recommend doing this for the other columns when you work with a new data
 
 Before we start analysis we may want to clean the data to make our column headers make more sense. 
 
-**Do in class@@**
+#### Renaming p_prelim
+
+I want to rename p_prelim because I don't always remember what it means. I want to rename it finishing_position.
+
+```{r}
+df <- rename(df, finishing_position = p_prelim)
+```
+
 
 ## Analysis
 
@@ -94,9 +103,9 @@ To answer this column, we need to focus on two things:
 
 To answer this question I might first filter the race_results to only look at the wins for each race -- the places where `p_prelim` is `1`. Then I would group the remaining rows by driver name. Once I have that I would then count how many times each driver's name appears and that would be how many times they won. In code that would be: 
 
-1. Filter data to just have winners (p_prelim == 1)
+1. Filter data to just have winners (`finishing_position == 1`)
 ```{r}
-winners <- filter(df, p_prelim == 1)
+winners <- filter(df, finishing_position == 1)
 ```
 
 2. Group winners by driver name 
@@ -107,7 +116,7 @@ winning_drivers <- group_by(winners, driver)
 3. Summarize winning_drivers by counting how many times they were in the dataset. Each time means a race win for them. We can use `summarise()` or `summarize()`
 
 ```{r}
-wins <- summarise(winning_drivers, count=n())
+wins <- summarize(winning_drivers, count=n())
 
 ```
 To find the most wins, we could open the `wins` object and sort by descending order using the little tabs and such. We could also use the `arrange()` function and let that do the work:
