@@ -1,0 +1,55 @@
+---
+title: "Dana"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+load tidyverse
+```{r}
+library(tidyverse)
+```
+load data
+
+```{r}
+race_results <- read_csv("race_results_statsf1.csv")
+```
+
+decide on questions:
+
+1. what teams have seen the most successful drivers?
+1. which team have raced the most F1 races?
+
+the story will possibly be about if the best/most successful F1 teams are the legacy teams or have newer competitors managed to gain any advantage.
+
+```{r}
+summary(race_results)
+```
+## Question 2
+
+which team have raced the most F1 races?
+
+```{r}
+competed<-filter(race_results, position != "f")
+just_teams <- competed %>% select(race_id, team) %>% distinct(race_id,team)
+```
+
+We can count this way:
+```{r}
+competed_teams <- just_teams %>%
+                  group_by(team) %>%
+                  summarize(number_of_races = n())
+```
+
+These teams competed. We want to count how many races each team has. Let's group by teams
+```{r}
+competed_teams <- group_by(competed,team) 
+```
+Now that we grouped them. Let's count how many races they each had.
+
+```{r}
+summarize(competed_teams, number_of_races=n_distinct())
+```
+
