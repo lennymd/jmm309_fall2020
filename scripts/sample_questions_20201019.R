@@ -93,3 +93,15 @@ monaco_collisions_by_year <- race_results_collisions %>% filter(race_name == "Mo
 
 # A3: There have been 89 collisions at Monaco. They're spread over 36 years
 
+#Q9. Why do drivers not finish?
+
+# I just loaded the excel data to a variable called retirement using the same thing i did in the step before.
+
+reasons <- retirements %>% group_by(extra) %>% summarise(count = n()) %>% arrange(desc(count))
+
+# NTS: How unreliable are engines?
+# NTS: What happened in 1982?
+
+reasons_1982 <- retirements %>% filter(year==1982) %>% group_by(extra) %>% summarise(count = n()) %>% arrange(desc(count))
+
+# Follow up: What races had the largest % of retirements?
